@@ -88,6 +88,11 @@ body {
   top: 1px;
 }
 
+.bandcamp-logo {
+  position: relative;
+  top: 2px;
+}
+
 @keyframes textflicker {
   from {
     text-shadow: 1px 0 0 #ea36af, -1px 0 0 #75fa69;
