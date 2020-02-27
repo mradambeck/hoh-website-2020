@@ -18,6 +18,8 @@ body {
   background: #0f0f0f;
   color: #b6b3a7;
   font-family: 'nb', sans-serif;
+  min-width: 300px;
+  min-height: 450px;
 }
 
 .center-flex {
@@ -35,6 +37,7 @@ body {
 
 .logo-svg {
   max-height: calc(100vh - 300px);
+  min-height: 350px;
   max-width: calc(100vw - 30px);
   animation-name: changeLogoColor;
   animation-duration: 40s;
