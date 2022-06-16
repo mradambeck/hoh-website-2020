@@ -1,4 +1,4 @@
-(function initAnimation () {
-  const logo = document.querySelector('.logo-svg');
-  
-})();
+// (function initAnimation () {
+//   const logo = document.querySelector('.logo-svg');
+
+// })();
