@@ -25,11 +25,19 @@
 <body>
   <main>
     <section class="center-flex splash">
-      <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" width="786.54" height="1080" viewBox="0 0 786.54 1080">
-        <path fill-rule="evenodd" d="M2548.36,1080.71H2283.02l131.32-132.553V712.817L2044.77,1080.71V284.054L1928.34,166.38S2093.49-1.336,2093.49.013l116.43,116.326V367.912l370.92-367.9V783.147L2450.89,914.34h263.98ZM2253.24,328.684c-14.89,13.529-28.43,28.4-43.32,41.933V670.884l175.99-175.833c9.47-8.117,18.95-17.582,28.43-27.047V167.737Zm-43.32,582.951,18.95-17.582v-236.7l-18.95,17.583v236.7Zm185.46-183.941,18.96-18.94v-236.7L2395.38,491v236.7Z" transform="translate(-1928.34)"/>
-      </svg>
-      <div class="screen-fade"></div>
+      <!-- Logo -->
+      <div class="logo" onClick="showVideo()">
+        <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" width="786.54" height="1080" viewBox="0 0 786.54 1080">
+          <path fill-rule="evenodd" d="M2548.36,1080.71H2283.02l131.32-132.553V712.817L2044.77,1080.71V284.054L1928.34,166.38S2093.49-1.336,2093.49.013l116.43,116.326V367.912l370.92-367.9V783.147L2450.89,914.34h263.98ZM2253.24,328.684c-14.89,13.529-28.43,28.4-43.32,41.933V670.884l175.99-175.833c9.47-8.117,18.95-17.582,28.43-27.047V167.737Zm-43.32,582.951,18.95-17.582v-236.7l-18.95,17.583v236.7Zm185.46-183.941,18.96-18.94v-236.7L2395.38,491v236.7Z" transform="translate(-1928.34)"/>
+        </svg>
+        <div class="screen-fade"></div>
+      </div>
+      <!-- Video -->
+      <div class="absolute hidden video">
+        <iframe width="1120" height="630" src="https://www.youtube.com/embed/cdMnzvD0VpM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
     </section>
+
     <section class="center-flex flex-col">
       <div class="text">HOUSES OF HEAVEN</div>
       <ul class="links">
@@ -63,3 +71,5 @@
   </main>
 </body>
 </html>
+
+<script type="text/javascript" src="./js/index.js"></script>
