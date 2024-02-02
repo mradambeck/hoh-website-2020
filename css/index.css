@@ -42,7 +42,8 @@ body {
 
 .splash {
   position: relative;
-  padding: 80px 0 80px;
+  padding: 0 0 80px;
+  height: calc(100vh - 240px);
 }
 
 .logo {
@@ -50,7 +51,7 @@ body {
 }
 
 .logo-svg {
-  max-height: calc(100vh - 200px);
+  max-height: calc(100vh - 220px);
   min-height: 500px;
   max-width: calc(100vw - 60px);
   /* animation-name: changeLogoColor;
