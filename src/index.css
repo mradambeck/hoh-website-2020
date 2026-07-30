@@ -1,0 +1,83 @@
+/* Intentionally minimal — layout only. Replace with real styling later. */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background: transparent;
+}
+
+nav ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 1rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+}
+
+main {
+  padding: 1rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.splash {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  height: 100vh;
+  margin-top: -1rem; /* cancel out main's padding so the image reaches the viewport's top edge */
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+}
+
+.splash-bg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+@media (max-width: 774px) {
+  nav {
+    position: static;
+    background: #000;
+  }
+
+  .splash {
+    height: auto;
+  }
+
+  .splash-bg {
+    height: auto;
+  }
+}
+
+.splash-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(50%, 60px + 47vw, 1260px);
+  height: auto;
+  transform: translate(-50%, -50%);
+}

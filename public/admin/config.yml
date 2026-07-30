@@ -1,0 +1,50 @@
+backend:
+  name: github
+  repo: mradambeck/hoh-website-2020
+  branch: main
+  # OAuth handshake for the GitHub backend can't be done from a static
+  # site, so it's proxied through a small Cloudflare Worker.
+  # See oauth-worker/ — deploy it, then point base_url at its URL.
+  base_url: https://REPLACE-WITH-YOUR-WORKER.workers.dev
+  auth_endpoint: auth
+
+# Files uploaded through the CMS media picker land in public/uploads and
+# are served from /uploads once built.
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "shows"
+    label: "Shows"
+    label_singular: "Show"
+    folder: "content/shows"
+    create: true
+    delete: true
+    format: "json"
+    slug: "{{fields.date}}-{{fields.venue}}"
+    identifier_field: venue
+    summary: "{{date}} — {{venue}}, {{city}}"
+    sortable_fields: ["date", "venue", "city"]
+    fields:
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        picker_utc: true
+        format: "YYYY-MM-DD"
+      - label: "Venue"
+        name: "venue"
+        widget: "string"
+      - label: "City"
+        name: "city"
+        widget: "string"
+      - label: "Ticket URL"
+        name: "ticketUrl"
+        widget: "string"
+        required: false
+        default: ""
+      - label: "Sold Out"
+        name: "soldOut"
+        widget: "boolean"
+        default: false
