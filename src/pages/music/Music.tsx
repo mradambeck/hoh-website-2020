@@ -1,7 +1,7 @@
 function Music() {
   return (
     <div>
-      <h1>Music</h1>
+      <h2>Music</h2>
     </div>
   );
 }

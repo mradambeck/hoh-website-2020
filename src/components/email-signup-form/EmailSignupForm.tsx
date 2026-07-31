@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { subscribe } from "../lib/emailProvider";
+import { subscribe } from "../../lib/emailProvider";
 
 type Status = "idle" | "loading" | "success" | "error";
 
