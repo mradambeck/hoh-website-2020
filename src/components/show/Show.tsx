@@ -10,47 +10,53 @@ interface Props {
 
 const Show = ({ show }: Props) => {
   return (
-    <li className={styles.show}>
-      <div className={[styles.date, styles.withDivider].join(" ")}>
-        {formatDate(show.date)}
-        {/* <div className={styles.year}>{show.date.slice(0, 4)}</div> */}
-      </div>
+    <li>
+      <div className={styles.show}>
+        <div className={styles.content}>
+          <div className={[styles.date, styles.withDivider].join(" ")}>
+            {formatDate(show.date)}
+            {/* <div className={styles.year}>{show.date.slice(0, 4)}</div> */}
+          </div>
 
-      <div className={[styles.locCol, styles.withDivider].join(" ")}>
-        <div className={styles.location}>
-          {show.city}
-          {show.state ? `, ${show.state}` : ""}
-          {show.country ? `, ${show.country}` : ""}
+          <div className={[styles.locCol, styles.withDivider].join(" ")}>
+            <div className={styles.location}>
+              {show.city}
+              {show.state ? `, ${show.state}` : ""}
+              {show.country ? `, ${show.country}` : ""}
+            </div>
+            <div className={styles.venue}>{show.venue}</div>
+          </div>
+          <div className={[styles.lineup, styles.withDivider].join(" ")}>
+            {show.eventName ? (
+              <div className={styles.eventName}>{show.eventName}</div>
+            ) : (
+              ""
+            )}
+            {show.lineup.length ? (
+              <div
+                className={styles.lineup}
+              >{`w/ ${show.lineup.join(", ")}`}</div>
+            ) : (
+              ""
+            )}
+          </div>
+          <div className={[styles.time, styles.withDivider].join(" ")}>
+            {show.doorTime && (
+              <div className={styles.dateTime}>
+                {show.showTime ? `Doors: ${show.doorTime}` : `${show.doorTime}`}
+              </div>
+            )}
+            {show.showTime && (
+              <div className={styles.dateTime}>
+                {show.doorTime ? `Show: ${show.showTime}` : `${show.showTime}`}
+              </div>
+            )}
+          </div>
+          {show.ticketUrl ? (
+            <ButtonLink href={show.ticketUrl}>Tickets</ButtonLink>
+          ) : null}
         </div>
-        <div className={styles.venue}>{show.venue}</div>
       </div>
-      <div className={[styles.lineup, styles.withDivider].join(" ")}>
-        {show.eventName ? (
-          <div className={styles.eventName}>{show.eventName}</div>
-        ) : (
-          ""
-        )}
-        {show.lineup.length ? (
-          <div className={styles.lineup}>{`w/ ${show.lineup.join(", ")}`}</div>
-        ) : (
-          ""
-        )}
-      </div>
-      <div className={[styles.time, styles.withDivider].join(" ")}>
-        {show.doorTime && (
-          <div className={styles.dateTime}>
-            {show.showTime ? `Doors: ${show.doorTime}` : `${show.doorTime}`}
-          </div>
-        )}
-        {show.showTime && (
-          <div className={styles.dateTime}>
-            {show.doorTime ? `Show: ${show.showTime}` : `${show.showTime}`}
-          </div>
-        )}
-      </div>
-      {show.ticketUrl ? (
-        <ButtonLink href={show.ticketUrl}>Tickets</ButtonLink>
-      ) : null}
     </li>
   );
 };

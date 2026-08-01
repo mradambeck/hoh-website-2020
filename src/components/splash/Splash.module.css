@@ -4,7 +4,6 @@
   right: 50%;
   width: 100vw;
   height: 100vh;
-  margin-top: -1rem; /* cancel out main's padding so the image reaches the viewport's top edge */
   margin-left: -50vw;
   margin-right: -50vw;
   overflow: hidden;
@@ -49,7 +48,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: clamp(50%, 60px + 47vw, 1260px);
+  width: clamp(50%, 6rem + 47vw, 126rem);
   height: auto;
   transform: translate(-50%, -50%);
   opacity: 0;

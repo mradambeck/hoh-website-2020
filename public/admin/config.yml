@@ -5,8 +5,15 @@ backend:
   # OAuth handshake for the GitHub backend can't be done from a static
   # site, so it's proxied through a small Cloudflare Worker.
   # See oauth-worker/ — deploy it, then point base_url at its URL.
-  base_url: https://REPLACE-WITH-YOUR-WORKER.workers.dev
+  base_url: https://hoh-decap-oauth.mr-adambeck.workers.dev
   auth_endpoint: auth
+
+# When running on localhost with `npm run cms` (decap-server) active in
+# another terminal, Decap automatically uses that local proxy instead of
+# the github backend above — no OAuth, no GitHub round-trip, writes land
+# directly in this working tree's content/ folder. Has no effect once
+# deployed (only kicks in for localhost).
+local_backend: true
 
 # Files uploaded through the CMS media picker land in public/uploads and
 # are served from /uploads once built.
@@ -33,18 +40,108 @@ collections:
         time_format: false
         picker_utc: true
         format: "YYYY-MM-DD"
+      - label: "Doors Time"
+        name: "doorTime"
+        widget: "string"
+        required: false
+        default: ""
+        hint: "e.g. 7:00 PM"
+      - label: "Show Time"
+        name: "showTime"
+        widget: "string"
+        required: false
+        default: ""
+        hint: "e.g. 8:00 PM"
       - label: "Venue"
         name: "venue"
         widget: "string"
       - label: "City"
         name: "city"
         widget: "string"
+      - label: "State"
+        name: "state"
+        widget: "string"
+        required: false
+        default: ""
+      - label: "Country"
+        name: "country"
+        widget: "string"
+        required: false
+        default: ""
       - label: "Ticket URL"
         name: "ticketUrl"
         widget: "string"
         required: false
         default: ""
-      - label: "Sold Out"
-        name: "soldOut"
-        widget: "boolean"
-        default: false
+      - label: "Lineup"
+        name: "lineup"
+        widget: "list"
+        field: { label: "Band", name: "band", widget: "string" }
+        hint: "Supporting acts, one per entry."
+      - label: "Announce Date"
+        name: "announceDate"
+        widget: "datetime"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        picker_utc: true
+        format: "YYYY-MM-DD"
+        required: false
+        hint: "Hides the show from the site until this date, if set."
+      - label: "Event Name"
+        name: "eventName"
+        widget: "string"
+        required: false
+        default: ""
+        hint: "e.g. a festival name, if this show is part of one."
+
+  - name: "news"
+    label: "News"
+    label_singular: "News Item"
+    folder: "content/news"
+    create: true
+    delete: true
+    format: "json"
+    slug: "{{fields.date}}-{{fields.title}}"
+    identifier_field: title
+    summary: "{{date}} — {{title}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        picker_utc: true
+        format: "YYYY-MM-DD"
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Description"
+        name: "description"
+        widget: "text"
+        required: false
+        default: ""
+      - label: "CTA Text"
+        name: "cta"
+        widget: "string"
+        required: false
+        default: ""
+      - label: "Link URL"
+        name: "href"
+        widget: "string"
+        required: false
+        default: ""
+      - label: "Image"
+        name: "image"
+        widget: "image"
+        required: false
+        default: ""
+      - label: "Expiration Date"
+        name: "expirationDate"
+        widget: "datetime"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        picker_utc: true
+        format: "YYYY-MM-DD"
+        required: false
+        hint: "Once this date passes, the item stops showing on the site."

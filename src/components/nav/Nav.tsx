@@ -1,16 +1,23 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import logo from "../../assets/hoh-logo-lp2.svg";
 import styles from "./Nav.module.css";
 
 function Nav() {
   const [isOpen, setIsOpen] = useState(false);
+  const isHome = useLocation().pathname === "/";
 
   return (
     <nav className={styles.nav}>
       <div className={styles.header}>
         <h1 className={styles.logoHeading}>
-          <img src={logo} alt="Houses of Heaven" className={styles.logo} />
+          <NavLink to="/" onClick={() => setIsOpen(false)}>
+            <img
+              src={logo}
+              alt="Houses of Heaven"
+              className={`${styles.logo} ${!isHome ? styles.logoVisible : ""}`}
+            />
+          </NavLink>
         </h1>
         <button
           type="button"
@@ -44,9 +51,24 @@ function Nav() {
           </NavLink>
         </li>
         <li>
+          <NavLink to="/video" onClick={() => setIsOpen(false)}>
+            Video
+          </NavLink>
+        </li>
+        <li>
           <NavLink to="/contact" onClick={() => setIsOpen(false)}>
             Contact
           </NavLink>
+        </li>
+        <li>
+          <a
+            href="https://housesofheaven.bandcamp.com/music"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsOpen(false)}
+          >
+            Shop
+          </a>
         </li>
       </ul>
     </nav>

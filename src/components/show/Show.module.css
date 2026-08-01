@@ -1,44 +1,54 @@
+/* Outer layer: background + skew. Pair with an opposite-direction skew on
+   .content so the background reads as diagonal while the content inside
+   stays upright and legible. */
 .show {
   color: var(--color-black);
   background: var(--color-white);
-  display: grid;
-  grid-template-columns: 150px minmax(150px, 220px) 1fr 120px auto;
-  column-gap: 16px;
-  align-items: center;
-  padding: 16px;
-  margin: 0 12px;
+  margin: 0 1.2rem;
+  transform: skew(10deg, 0.5deg);
+  padding: 1.6rem;
 }
 
-.show + .show {
-  margin-top: 20px;
+li + li > .show {
+  margin-top: 2rem;
+}
+
+/* Inner layer: actual grid layout + counter-skew. */
+.content {
+  display: grid;
+  grid-template-columns: 15rem minmax(15rem, 22rem) 1fr 12rem auto;
+  column-gap: 1.6rem;
+  align-items: center;
+  padding: 1.6rem;
+  transform: skew(-10deg, -0.5deg);
 }
 
 .withDivider {
   border-right: 1px solid var(--color-light-grey);
-  padding-right: 16px;
+  padding-right: 1.6rem;
 }
 
 .date {
   text-transform: uppercase;
-  font-size: 36px;
+  font-size: 3.6rem;
   text-align: right;
   box-sizing: border-box;
 }
 
 .time {
-  font-size: 12px;
+  font-size: 1.2rem;
   color: var(--color-dark-grey);
 }
 
 .year {
-  font-size: 14px;
+  font-size: 1.4rem;
   color: var(--color-med-grey);
   font-weight: 500;
-  margin-bottom: 4px;
+  margin-bottom: 0.4rem;
 }
 
 .venue {
-  font-size: 14px;
+  font-size: 1.4rem;
 }
 
 .location {
@@ -47,19 +57,24 @@
 
 .eventName {
   font-weight: 600;
-  font-size: 16px;
+  font-size: 1.6rem;
   color: var(--color-black);
 }
 
 .lineup {
-  font-size: 14px;
+  font-size: 1.4rem;
   color: var(--color-dark-grey);
 }
 
 @media (max-width: 774px) {
   .show {
+    transform: none;
+  }
+
+  .content {
     grid-template-columns: 1fr;
-    row-gap: 8px;
+    row-gap: 0.8rem;
+    transform: none;
   }
 
   .withDivider {

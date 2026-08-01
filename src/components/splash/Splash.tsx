@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import splash from "../../assets/HOH-CHI.webp?w=640;960;1280;1920;2500&format=avif;webp;jpg&as=picture";
-import logo from "../../assets/hoh-logo-lp2.svg";
+import splash from "@assets/HOH-CHI.webp?w=640;960;1280;1920;2500&format=avif;webp;jpg&as=picture";
+import logo from "@assets/hoh-logo-lp2.svg";
 import styles from "./Splash.module.css";
 
 // Responsive variants generated at build time by vite-imagetools (see

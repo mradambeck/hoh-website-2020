@@ -34,8 +34,10 @@ function htmlMessagePage({ success, provider, token, error }) {
   // Decap's popup handshake: the popup announces itself as "authorizing",
   // waits for the opener to echo that back, then sends the real result.
   // This two-step exists so the opener has a chance to attach its
-  // listener before the payload is sent. It's finicky but it's the
-  // protocol Decap (and the Netlify CMS it forked from) expects.
+  // listener before the payload is sent. The opener's listener isn't
+  // guaranteed to be attached yet on the first ping (React hasn't
+  // necessarily rendered), so re-ping on an interval until it responds
+  // instead of firing once — a one-shot ping can race and hang forever.
   return `<!doctype html>
 <html>
   <body>
@@ -47,9 +49,12 @@ function htmlMessagePage({ success, provider, token, error }) {
             e.origin,
           );
           window.removeEventListener('message', receiveMessage, false);
+          clearInterval(pingInterval);
         }
         window.addEventListener('message', receiveMessage, false);
-        window.opener.postMessage('authorizing:${provider}', '*');
+        var pingInterval = setInterval(function () {
+          window.opener.postMessage('authorizing:${provider}', '*');
+        }, 250);
       })();
     </script>
   </body>

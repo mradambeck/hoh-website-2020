@@ -3,9 +3,9 @@
   color: var(--color-black);
   background: transparent;
   border: 1px solid var(--color-dark-red);
-  padding: 8px 16px;
-  border-radius: 4px;
-  font-size: 14px;
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.4rem;
+  font-size: 1.4rem;
   cursor: pointer;
   text-transform: uppercase;
   text-align: center;
