@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
 import splash from "@assets/HOH-CHI.webp?w=640;960;1280;1920;2500&format=avif;webp;jpg&as=picture";
 import logo from "@assets/hoh-logo-lp2.svg";
 import styles from "./Splash.module.css";
+
+const fadeInTransition = { duration: 0.6, ease: "easeInOut" as const };
 
 // Responsive variants generated at build time by vite-imagetools (see
 // vite.config.ts) — avif/webp for supporting browsers, jpg as the
@@ -24,9 +27,11 @@ function Splash() {
         {Object.entries(splash.sources).map(([format, srcset]) => (
           <source key={format} type={`image/${format}`} srcSet={srcset} />
         ))}
-        <img
+        <motion.img
           ref={imgRef}
-          className={`${styles.splashBg} ${loaded ? styles.loaded : ""}`}
+          className={styles.splashBg}
+          animate={{ opacity: loaded ? 1 : 0 }}
+          transition={fadeInTransition}
           src={splash.img.src}
           width={splash.img.w}
           height={splash.img.h}
@@ -38,9 +43,11 @@ function Splash() {
         />
       </picture>
       <h1 className={styles.logoHeading}>
-        <img
+        <motion.img
           ref={logoRef}
-          className={`${styles.splashLogo} ${logoLoaded ? styles.loaded : ""}`}
+          className={styles.splashLogo}
+          animate={{ opacity: logoLoaded ? 1 : 0 }}
+          transition={fadeInTransition}
           src={logo}
           alt="Houses of Heaven"
           onLoad={() => setLogoLoaded(true)}

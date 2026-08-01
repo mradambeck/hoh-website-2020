@@ -95,20 +95,7 @@
     width: 2.2rem;
     height: 2px; /* hairline stroke — kept in px so it stays crisp at any root font-size */
     background: var(--color-white);
-    transform: translate(-50%, -0.6rem);
-    transition: transform 0.25s ease;
-  }
-
-  .bar:last-child {
-    transform: translate(-50%, 0.6rem);
-  }
-
-  .toggle.open .bar {
-    transform: translate(-50%, 0) rotate(45deg);
-  }
-
-  .toggle.open .bar:last-child {
-    transform: translate(-50%, 0) rotate(-45deg);
+    /* transform (position + open/close rotation) is animated by motion */
   }
 
   .links {
@@ -121,23 +108,8 @@
     padding: 0 1.6rem 1.6rem;
     background: var(--color-black);
     z-index: 20;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-0.8rem);
-    transition:
-      opacity 0.2s ease,
-      transform 0.2s ease,
-      visibility 0s linear 0.2s;
-  }
-
-  .links.open {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    transition:
-      opacity 0.2s ease,
-      transform 0.2s ease,
-      visibility 0s linear 0s;
+    /* opacity/transform (open/close animation) are handled by motion;
+       mounting is gated by AnimatePresence instead of visibility */
   }
 
   .links li + li {
