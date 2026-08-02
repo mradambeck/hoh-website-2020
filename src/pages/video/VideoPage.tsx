@@ -2,8 +2,10 @@ import YoutubeEmbed from "@components/youtube-embed/YoutubeEmbed";
 
 import styles from "./VideoPage.module.css";
 
-function VideoPage() {
-  return (
+const VideoPage = () => (
+  <>
+    <title>Music Videos | Houses of Heaven</title>
+
     <section className={styles.video}>
       <div className={styles.pageWrapper}>
         <h2 className={styles.header}>VIDEO</h2>
@@ -25,7 +27,7 @@ function VideoPage() {
         />
       </div>
     </section>
-  );
-}
+  </>
+);
 
 export default VideoPage;
