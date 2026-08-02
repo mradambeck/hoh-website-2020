@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+# Installed via `npm install` (see the "prepare" script in package.json,
+# which points git at this directory with `git config core.hooksPath`).
+# Blocks the commit if either test suite fails.
+
+repo_root=$(git rev-parse --show-toplevel)
+cd "$repo_root" || exit 1
+
+echo "Running site tests..."
+if ! npm run test; then
+  echo ""
+  echo "Site tests failed - commit aborted. Fix the failures above, or run 'git commit --no-verify' to skip this check."
+  exit 1
+fi
+
+echo "Running oauth-worker tests..."
+if ! (cd "$repo_root/oauth-worker" && npm run test); then
+  echo ""
+  echo "oauth-worker tests failed - commit aborted. Fix the failures above, or run 'git commit --no-verify' to skip this check."
+  exit 1
+fi
+
+echo "All tests passed."

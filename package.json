@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "cms": "decap-server"
+    "cms": "decap-server",
+    "prepare": "git config core.hooksPath .githooks"
   },
   "dependencies": {
     "motion": "^12.43.0",
