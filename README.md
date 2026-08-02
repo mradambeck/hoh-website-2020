@@ -8,7 +8,7 @@ Live at [housesofheaven.com](https://housesofheaven.com).
 ## Stack
 
 - **Vite + React + TypeScript** — static build, no server.
-- **React Router** — `/`, `/shows`, `/music`, `/contact`.
+- **React Router** — `/`, `/live`, `/music`, `/video`, `/contact`.
 - **Decap CMS** (`/admin`) — git-based CMS for the `shows` collection.
   Content is written to `content/shows/*.json`, which the app reads at
   build time via `import.meta.glob` (see [src/lib/shows.ts](src/lib/shows.ts)).
@@ -23,7 +23,7 @@ Live at [housesofheaven.com](https://housesofheaven.com).
   that endpoint is form-scoped and meant for exactly this). Provider
   logic is isolated in [src/lib/emailProvider.ts](src/lib/emailProvider.ts)
   so it can be swapped for another provider without touching the form.
-  (Kit's account-wide v4 API is a separate thing that *does* need an
+  (Kit's account-wide v4 API is a separate thing that _does_ need an
   auth key and isn't used here — don't confuse the two.)
 
 ## Local development
@@ -91,10 +91,3 @@ the OAuth worker above is deployed. Each show is one file:
   "soldOut": false
 }
 ```
-
-## Legacy site
-
-The previous static HTML/CSS/JS splash page has been moved to
-[legacy/](legacy/) for reference — logos and the custom font used there
-now live in [src/assets/](src/assets/) and [public/](public/) for reuse.
-Safe to delete once you no longer need it.
