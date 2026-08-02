@@ -2,11 +2,15 @@
   "name": "hoh-decap-oauth",
   "private": true,
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler deploy"
+    "deploy": "wrangler deploy",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "devDependencies": {
+    "vitest": "^4.1.10",
     "wrangler": "^3.80.0"
   }
 }

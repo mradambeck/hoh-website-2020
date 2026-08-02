@@ -14,5 +14,9 @@
 
     "strict": true
   },
-  "include": ["vite.config.ts"]
+  "include": [
+    "vite.config.ts",
+    "admin-rewrite-middleware.ts",
+    "admin-rewrite-middleware.test.ts"
+  ]
 }
