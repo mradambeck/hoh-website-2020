@@ -1,0 +1,18 @@
+.wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.loadingOverlay {
+  position: absolute;
+  inset: 0;
+  /* opacity < 1 (from the real iframe's motion-driven fade-in) forms its
+     own stacking context and would otherwise paint above this overlay
+     despite position: absolute — see MusicLinks.module.css for the same
+     issue. Explicit z-index forces the correct order regardless. */
+  z-index: 1;
+}
+
+.youtubeEmbed {
+  border: 0;
+}

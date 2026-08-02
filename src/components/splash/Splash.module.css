@@ -1,0 +1,50 @@
+.splash {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  height: 100vh;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+}
+
+.splashBg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  /* opacity fade-in is animated by motion */
+}
+
+@media (max-width: 774px) {
+  .splash {
+    height: auto;
+  }
+
+  .splashBg {
+    height: auto;
+    position: relative;
+    left: 6%;
+  }
+
+  .splashLogo {
+    display: none;
+  }
+}
+
+.logoHeading {
+  display: contents;
+  margin: 0;
+}
+
+.splashLogo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(50%, 6rem + 47vw, 126rem);
+  height: auto;
+  transform: translate(-50%, -50%);
+  /* opacity fade-in is animated by motion */
+}

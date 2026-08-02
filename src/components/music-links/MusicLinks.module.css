@@ -1,0 +1,56 @@
+.wrapper {
+  position: relative;
+}
+
+.loadingOverlay {
+  position: absolute;
+  inset: 0;
+  /* opacity < 1 (from the real content's motion-driven fade-in) forms its
+     own stacking context and would otherwise paint above this overlay
+     despite position: absolute, since they'd then be ordered by DOM
+     position rather than by position value. Explicit z-index forces the
+     correct order regardless. */
+  z-index: 1;
+}
+
+.musicLinks {
+  display: flex;
+  flex-direction: row;
+  gap: 6rem;
+}
+
+.albumArt {
+  width: 28vw;
+  max-width: 32rem;
+  height: 28vw;
+  max-height: 32rem;
+  object-fit: cover;
+  flex-shrink: 0;
+  /* No flex-grow: it only grows width (the main axis in a row), not
+     height, which would break the square aspect ratio. Width/height
+     already scale together via the matching 28vw + 32rem values. */
+}
+
+.button {
+  background: var(--color-dark-red);
+  color: var(--color-white);
+}
+
+.playerAndLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  flex-grow: 2;
+}
+
+@media (max-width: 774px) {
+  .musicLinks {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .albumArt {
+    width: 60vw;
+    height: 60vw;
+  }
+}

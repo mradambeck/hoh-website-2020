@@ -1,0 +1,46 @@
+.withinWithout {
+  margin: 2rem auto;
+  background: var(--color-yellow);
+  transform: skewY(-4deg);
+  padding: 3rem 0;
+  color: var(--color-black);
+}
+
+.content {
+  max-width: 120rem;
+  margin: 4rem auto;
+  line-height: 1.6;
+  padding: 0 2.6rem;
+  transform: skewY(4deg);
+}
+
+.header {
+  font-size: 3.6rem;
+  font-weight: 200;
+}
+
+.albumArt {
+  width: 20vw;
+  height: 20vw;
+}
+
+.layout {
+  display: flex;
+  gap: 2.6rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 830px) {
+  .layout {
+    flex-direction: column;
+    gap: 1.6rem;
+    align-items: center;
+  }
+  .albumArt {
+    width: 40vw;
+    height: 40vw;
+  }
+  .header {
+    text-align: center;
+  }
+}
