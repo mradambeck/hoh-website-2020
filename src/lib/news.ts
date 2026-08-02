@@ -12,10 +12,14 @@ const allNews: NewsItem[] = Object.values(modules).map((mod) => mod.default);
 const MAX_RECENT_ITEMS = 3;
 const MAX_AGE_MONTHS = 4;
 
-export function getRecentNews(): NewsItem[] {
-  return allNews
+export function selectRecentNews(news: NewsItem[]): NewsItem[] {
+  return news
     .filter((item) => !item.expirationDate || !isInPast(item.expirationDate))
     .filter((item) => !isOlderThanMonths(item.date, MAX_AGE_MONTHS))
     .sort((a, b) => b.date.localeCompare(a.date))
     .slice(0, MAX_RECENT_ITEMS);
+}
+
+export function getRecentNews(): NewsItem[] {
+  return selectRecentNews(allNews);
 }

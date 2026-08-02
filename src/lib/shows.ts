@@ -9,9 +9,13 @@ const modules = import.meta.glob<{ default: Show }>("/content/shows/*.json", {
 
 const allShows: Show[] = Object.values(modules).map((mod) => mod.default);
 
-export function getUpcomingShows(): Show[] {
-  return allShows
+export function selectUpcomingShows(shows: Show[]): Show[] {
+  return shows
     .filter((show) => !isInPast(show.date))
     .filter((show) => !show.announceDate || isInPast(show.announceDate))
     .sort((a, b) => a.date.localeCompare(b.date));
+}
+
+export function getUpcomingShows(): Show[] {
+  return selectUpcomingShows(allShows);
 }

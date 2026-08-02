@@ -1,32 +1,21 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { defineConfig, type Connect, type Plugin } from "vite";
+import type { Plugin } from "vite";
+import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 import { imagetools } from "vite-imagetools";
+import { rewriteAdminIndexMiddleware } from "./admin-rewrite-middleware.ts";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// Neither /admin nor /admin/ has an exact file match, so both vite dev
-// and vite preview fall through to the SPA's own index.html instead of
-// public/admin/index.html — preview at least does directory-index
-// resolution for a trailing slash, dev doesn't do that at all. Rewrite
-// the request to the real file path before any other middleware (in
-// particular vite dev's index.html transform, which only touches the
-// project-root index.html, not this one) sees it.
 function rewriteAdminIndex(): Plugin {
-  const middleware: Connect.NextHandleFunction = (req, res, next) => {
-    if (req.url === "/admin" || req.url === "/admin/") {
-      req.url = "/admin/index.html";
-    }
-    next();
-  };
   return {
     name: "rewrite-admin-index",
     configureServer(server) {
-      server.middlewares.use(middleware);
+      server.middlewares.use(rewriteAdminIndexMiddleware);
     },
     configurePreviewServer(server) {
-      server.middlewares.use(middleware);
+      server.middlewares.use(rewriteAdminIndexMiddleware);
     },
   };
 }
@@ -47,5 +36,9 @@ export default defineConfig({
       "@types/*": path.resolve(__dirname, "src/types/*"),
       "@utils": path.resolve(__dirname, "src/utils"),
     },
+  },
+  test: {
+    environment: "jsdom",
+    include: ["src/**/*.test.ts?(x)", "*.test.ts"],
   },
 });
