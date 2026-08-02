@@ -1,8 +1,8 @@
 import { getUpcomingShows } from "@lib/shows";
 import Show from "@components/show/Show";
-import styles from "./Live.module.css";
+import styles from "./LivePage.module.css";
 
-function Live() {
+function LivePage() {
   const shows = getUpcomingShows();
   return (
     <div className={styles.livePage}>
@@ -24,4 +24,4 @@ function Live() {
   );
 }
 
-export default Live;
+export default LivePage;

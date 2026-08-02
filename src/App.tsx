@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import Nav from "./components/nav/Nav";
 import Footer from "./components/footer/Footer";
-import Home from "./pages/home/Home";
-import Live from "./pages/live/Live";
-import Music from "./pages/music/Music";
-import Video from "./pages/video/Video";
-import Contact from "./pages/contact/Contact";
+import HomePage from "./pages/home/HomePage";
+import LivePage from "./pages/live/LivePage";
+import MusicPage from "./pages/music/MusicPage";
+import VideoPage from "./pages/video/VideoPage";
+import ContactPage from "./pages/contact/ContactPage";
 import styles from "./App.module.css";
 
 function App() {
@@ -14,11 +14,11 @@ function App() {
       <Nav />
       <main className={styles.main}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/live" element={<Live />} />
-          <Route path="/music" element={<Music />} />
-          <Route path="/video" element={<Video />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/live" element={<LivePage />} />
+          <Route path="/music" element={<MusicPage />} />
+          <Route path="/video" element={<VideoPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </main>
       <Footer />

@@ -3,7 +3,7 @@ import Bio from "@components/bio/Bio";
 import WithinWithout from "@components/within-without/WithinWithout";
 import News from "@components/news/News";
 
-function Home() {
+function HomePage() {
   return (
     <div>
       <Splash />
@@ -14,4 +14,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomePage;

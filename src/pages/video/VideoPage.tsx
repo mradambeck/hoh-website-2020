@@ -1,8 +1,8 @@
 import YoutubeEmbed from "@components/youtube-embed/YoutubeEmbed";
 
-import styles from "./Video.module.css";
+import styles from "./VideoPage.module.css";
 
-function Video() {
+function VideoPage() {
   return (
     <section className={styles.video}>
       <div className={styles.pageWrapper}>
@@ -28,4 +28,4 @@ function Video() {
   );
 }
 
-export default Video;
+export default VideoPage;

@@ -1,7 +1,7 @@
 import EmailSignupForm from "@components/email-signup-form/EmailSignupForm";
-import styles from "./Contact.module.css";
+import styles from "./ContactPage.module.css";
 
-function Contact() {
+function ContactPage() {
   return (
     <div className={styles.contactPage}>
       <section className={styles.content}>
@@ -39,4 +39,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+export default ContactPage;
