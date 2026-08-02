@@ -27,9 +27,6 @@ jobs:
 
       - run: npm ci
       - run: npm run build
-        env:
-          VITE_CONVERTKIT_FORM_ID: ${{ secrets.VITE_CONVERTKIT_FORM_ID }}
-          VITE_CONVERTKIT_API_KEY: ${{ secrets.VITE_CONVERTKIT_API_KEY }}
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

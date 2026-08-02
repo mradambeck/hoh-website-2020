@@ -1,0 +1,22 @@
+.block {
+  width: 56rem;
+  height: 31.5rem;
+  border-radius: 0.4rem;
+  background: linear-gradient(
+    90deg,
+    var(--color-dark-grey) 25%,
+    var(--color-med-grey) 37.5%,
+    var(--color-dark-grey) 50%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

@@ -1,3 +1,5 @@
+import { motion } from "motion/react";
+
 import ButtonLink from "@components/button-link/ButtonLink";
 
 import type { Show as ShowType } from "@types";
@@ -6,11 +8,17 @@ import styles from "./Show.module.css";
 
 interface Props {
   show: ShowType;
+  // Used for animation delay:
+  index: number;
 }
 
-const Show = ({ show }: Props) => {
+const Show = ({ show, index }: Props) => {
   return (
-    <li>
+    <motion.li
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: index * 0.1, duration: 0.3, ease: "easeInOut" }}
+    >
       <div className={styles.show}>
         <div className={styles.content}>
           <div className={[styles.date, styles.withDivider].join(" ")}>
@@ -57,7 +65,7 @@ const Show = ({ show }: Props) => {
           ) : null}
         </div>
       </div>
-    </li>
+    </motion.li>
   );
 };
 

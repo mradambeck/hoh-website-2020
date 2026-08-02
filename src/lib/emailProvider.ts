@@ -6,35 +6,27 @@
  */
 export type SubscribeFn = (email: string) => Promise<void>;
 
-const CONVERTKIT_FORM_ID = import.meta.env.VITE_CONVERTKIT_FORM_ID as
-  | string
-  | undefined;
-const CONVERTKIT_API_KEY = import.meta.env.VITE_CONVERTKIT_API_KEY as
-  | string
-  | undefined;
+// Kit (formerly ConvertKit)'s "inline" embed forms have their own public,
+// form-scoped subscription endpoint that's safe to call directly from
+// the browser — no API key involved. This is distinct from (and much
+// simpler than) Kit's account-wide v4 API, which does require an
+// account-scoped key and isn't meant for client-side use.
+const FORM_ID = "9754298";
+const SUBSCRIBE_URL = `https://app.kit.com/forms/${FORM_ID}/subscriptions`;
 
-// ConvertKit (Kit)'s v3 form-subscribe endpoint is designed to be called
-// directly from the browser with the public "API Key" (not the secret),
-// so no proxy/backend is needed. Docs: https://developers.convertkit.com/
 const subscribeConvertKit: SubscribeFn = async (email) => {
-  if (!CONVERTKIT_FORM_ID || !CONVERTKIT_API_KEY) {
+  const res = await fetch(SUBSCRIBE_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({ email_address: email }),
+  });
+
+  const body = await res.json().catch(() => null);
+
+  if (!res.ok || body?.status !== "success") {
     throw new Error(
-      "Missing VITE_CONVERTKIT_FORM_ID / VITE_CONVERTKIT_API_KEY env vars",
+      body?.errors?.messages?.join(", ") ?? `Signup failed (${res.status})`,
     );
-  }
-
-  const res = await fetch(
-    `https://api.convertkit.com/v3/forms/${CONVERTKIT_FORM_ID}/subscribe`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ api_key: CONVERTKIT_API_KEY, email }),
-    },
-  );
-
-  if (!res.ok) {
-    const body = await res.json().catch(() => null);
-    throw new Error(body?.message ?? `Signup failed (${res.status})`);
   }
 };
 

@@ -3,9 +3,10 @@ import styles from "./SpotifyEmbed.module.css";
 interface Props {
   className?: string;
   id: string;
+  onLoaded?: () => void;
 }
 
-const SpotifyEmbed = ({ className, id }: Props) => (
+const SpotifyEmbed = ({ className, id, onLoaded = () => null }: Props) => (
   <iframe
     className={
       className ? `${styles.spotifyEmbed} ${className}` : styles.spotifyEmbed
@@ -19,6 +20,7 @@ const SpotifyEmbed = ({ className, id }: Props) => (
     allowFullScreen
     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
     loading="lazy"
+    onLoad={onLoaded}
   ></iframe>
 );
 

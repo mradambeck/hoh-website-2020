@@ -1,0 +1,17 @@
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.socialLink:hover,
+.socialLink:focus-visible {
+  opacity: 1;
+}
+
+.logo {
+  height: 2.4rem;
+  width: auto;
+}

@@ -1,0 +1,87 @@
+.contactPage {
+  background: var(--color-dark-red);
+  color: var(--color-white);
+  width: 100vw;
+  min-height: calc(100vh - 5.7rem);
+  margin-top: 5.1rem; /* clears the nav bar's own height (5.1rem) so its transparent background doesn't overlap this page's background */
+  padding: 4rem 0;
+}
+
+.content {
+  max-width: 110rem;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  font-size: 8rem;
+  font-weight: 200;
+}
+
+.emailSignupForm {
+  & input {
+    background: var(--color-white);
+    border: 1px solid var(--color-black);
+  }
+  & button {
+    background: var(--color-black);
+  }
+}
+
+.booking {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 6rem;
+  text-align: center;
+}
+
+.bookingHeader {
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 200;
+}
+
+.region {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.booker {
+  margin-bottom: 0.5em;
+}
+
+.address {
+  font-style: normal;
+
+  & a {
+    color: var(--color-white);
+    text-decoration: none;
+    font-style: italic;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+    font-size: 1.4rem;
+  }
+
+  & a:hover,
+  & a:focus-visible {
+    opacity: 1;
+  }
+}
+
+.address + .address {
+  margin-top: 4rem;
+}
+
+@media (max-width: 774px) {
+  .contactPage {
+    padding: 1rem 0;
+    margin-top: 0;
+  }
+
+  .emailSignupForm {
+    margin: 0 4rem;
+  }
+}

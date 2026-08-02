@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
 
 import albumArt from "@assets/within-without.jpg?w=640;960;1280;1920;2500&format=avif;webp;jpg&as=picture";
 
@@ -26,9 +27,9 @@ const WithinWithout = () => {
               {Object.entries(albumArt.sources).map(([format, srcset]) => (
                 <source key={format} type={`image/${format}`} srcSet={srcset} />
               ))}
-              <img
+              <motion.img
                 ref={imgRef}
-                className={`${styles.albumArt} ${loaded ? styles.loaded : ""}`}
+                className={styles.albumArt}
                 src={albumArt.img.src}
                 width={albumArt.img.w}
                 height={albumArt.img.h}
@@ -36,6 +37,8 @@ const WithinWithout = () => {
                 alt="Within Without Album Art"
                 loading="eager"
                 fetchPriority="high"
+                animate={{ opacity: loaded ? 1 : 0 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
                 onLoad={() => setLoaded(true)}
               />
             </picture>

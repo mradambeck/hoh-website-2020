@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "motion/react";
 import { useIsMobile } from "@hooks/useIsMobile";
+import SocialLinks from "@components/social-links/SocialLinks";
 import logo from "../../assets/hoh-logo-lp2.svg";
 import styles from "./Nav.module.css";
 
@@ -97,6 +98,11 @@ function Nav() {
                 Shop
               </a>
             </li>
+            {isMobile && (
+              <li>
+                <SocialLinks className={styles.mobileSocialLinks} />
+              </li>
+            )}
           </motion.ul>
         )}
       </AnimatePresence>

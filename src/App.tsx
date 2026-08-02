@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Nav from "./components/nav/Nav";
+import Footer from "./components/footer/Footer";
 import Home from "./pages/home/Home";
 import Live from "./pages/live/Live";
 import Music from "./pages/music/Music";
@@ -20,6 +21,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
+      <Footer />
     </>
   );
 }

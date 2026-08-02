@@ -18,16 +18,18 @@ Live at [housesofheaven.com](https://housesofheaven.com).
 - **Cloudflare Worker** (`oauth-worker/`) — OAuth proxy for Decap's GitHub
   login. GitHub Pages can't hold a client secret, so this small Worker
   does the auth handshake instead.
-- **Email signup** — client-side form ([src/components/EmailSignupForm.tsx](src/components/EmailSignupForm.tsx))
-  posting directly to ConvertKit (Kit)'s API. Provider logic is isolated
-  in [src/lib/emailProvider.ts](src/lib/emailProvider.ts) so it can be
-  swapped for another provider without touching the form.
+- **Email signup** — client-side form posting directly to Kit (formerly
+  ConvertKit)'s public "inline form" subscription endpoint (no API key —
+  that endpoint is form-scoped and meant for exactly this). Provider
+  logic is isolated in [src/lib/emailProvider.ts](src/lib/emailProvider.ts)
+  so it can be swapped for another provider without touching the form.
+  (Kit's account-wide v4 API is a separate thing that *does* need an
+  auth key and isn't used here — don't confuse the two.)
 
 ## Local development
 
 ```sh
 npm install
-cp .env.example .env   # fill in ConvertKit form ID + API key
 npm run dev
 ```
 
@@ -64,15 +66,11 @@ backend:
 
 Repo Settings → Pages → Source → **GitHub Actions**.
 
-### 3. Set repository secrets for the build
+### 3. Point the email form at your Kit form
 
-Repo Settings → Secrets and variables → Actions:
-
-- `VITE_CONVERTKIT_FORM_ID`
-- `VITE_CONVERTKIT_API_KEY`
-
-(ConvertKit's "API Key" is the public one meant for client-side use, not
-the account secret — see `.env.example`.)
+`src/lib/emailProvider.ts`'s `FORM_ID` needs to match an actual "inline"
+form in your Kit account (Landing Pages & Forms). No API key or secret
+needed — this endpoint is public and form-scoped by design.
 
 ### 4. Give Decap write access
 

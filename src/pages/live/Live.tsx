@@ -14,8 +14,8 @@ function Live() {
           </p>
         ) : (
           <ul className={styles.list}>
-            {shows.map((show) => (
-              <Show key={`${show.date}-${show.venue}`} show={show} />
+            {shows.map((show, i) => (
+              <Show key={`${show.date}-${show.venue}`} show={show} index={i} />
             ))}
           </ul>
         )}
