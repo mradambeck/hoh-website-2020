@@ -32,7 +32,7 @@
 
 @media (max-width: 774px) {
   .livePage {
-    padding: 1rem 0;
+    padding: 1rem 0 8rem;
     margin-top: 0;
   }
 }

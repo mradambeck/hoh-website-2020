@@ -69,12 +69,13 @@ li + li > .show {
 @media (max-width: 774px) {
   .show {
     transform: none;
+    transform: skew(1deg, 0.5deg);
   }
 
   .content {
     grid-template-columns: 1fr;
     row-gap: 0.8rem;
-    transform: none;
+    transform: skew(-1deg, -0.5deg);
   }
 
   .withDivider {
