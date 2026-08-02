@@ -23,10 +23,14 @@ function Nav() {
     <nav className={styles.nav}>
       <div className={styles.header}>
         <h1 className={styles.logoHeading}>
-          <NavLink to="/" onClick={() => setIsOpen(false)}>
+          <NavLink
+            to="/"
+            aria-label="Houses of Heaven"
+            onClick={() => setIsOpen(false)}
+          >
             <img
               src={logo}
-              alt="Houses of Heaven"
+              alt=""
               className={`${styles.logo} ${!isHome ? styles.logoVisible : ""}`}
             />
           </NavLink>

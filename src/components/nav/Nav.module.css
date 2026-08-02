@@ -81,6 +81,9 @@
     transform: translate(-50%, -50%);
     height: 2.8rem;
     width: auto;
+    /* .logoVisible's margin-left is a desktop-only spacing concern (see
+       below) and would otherwise throw off this absolute centering. */
+    margin-left: 0;
   }
 
   .toggle {

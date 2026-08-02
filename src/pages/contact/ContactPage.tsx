@@ -22,12 +22,12 @@ const ContactPage = () => (
             <address className={styles.address}>
               <div className={styles.region}>EUROPE</div>
               <div className={styles.booker}>Swamp Booking</div>
-              <div>
+              <div className={styles.mailToWrapper}>
                 <a href="mailto:nikita@swampbooking.com">
                   nikita@swampbooking.com
                 </a>
               </div>
-              <div>
+              <div className={styles.mailToWrapper}>
                 <a href="mailto:ricky@swampbooking.com">
                   ricky@swampbooking.com
                 </a>

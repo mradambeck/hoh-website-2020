@@ -75,6 +75,10 @@
   margin-top: 4rem;
 }
 
+.mailToWrapper + .mailToWrapper {
+  margin-top: 0.6rem;
+}
+
 @media (max-width: 774px) {
   .contactPage {
     padding: 1rem 0;
