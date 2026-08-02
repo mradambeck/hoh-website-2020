@@ -3,15 +3,16 @@ import Bio from "@components/bio/Bio";
 import WithinWithout from "@components/within-without/WithinWithout";
 import News from "@components/news/News";
 
-function Home() {
-  return (
+const HomePage = () => (
+  <>
+    <title>Official Website | Houses of Heaven</title>
     <div>
       <Splash />
       <Bio />
       <WithinWithout />
       <News />
     </div>
-  );
-}
+  </>
+);
 
-export default Home;
+export default HomePage;

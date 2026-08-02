@@ -1,8 +1,9 @@
 import EmailSignupForm from "@components/email-signup-form/EmailSignupForm";
-import styles from "./Contact.module.css";
+import styles from "./ContactPage.module.css";
 
-function Contact() {
-  return (
+const ContactPage = () => (
+  <>
+    <title>Contact & Mailing List | Houses of Heaven</title>
     <div className={styles.contactPage}>
       <section className={styles.content}>
         <h2 className={styles.header}>CONTACT</h2>
@@ -36,7 +37,7 @@ function Contact() {
         </div>
       </section>
     </div>
-  );
-}
+  </>
+);
 
-export default Contact;
+export default ContactPage;

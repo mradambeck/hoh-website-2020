@@ -5,10 +5,11 @@ import shotInTheDarkArt from "@assets/shotinthedark.jpg";
 import silentPlacesArt from "@assets/SilentPlaces.jpg";
 import sleepArt from "@assets/Sleep.jpg";
 import remnantArt from "@assets/remnant.jpg";
-import styles from "./Music.module.css";
+import styles from "./MusicPage.module.css";
+const MusicPage = () => (
+  <>
+    <title>Music & Releases | Houses of Heaven</title>
 
-function Music() {
-  return (
     <section className={styles.musicPage}>
       <h2 className={styles.header}>MUSIC</h2>
       <div className={styles.content}>
@@ -63,7 +64,7 @@ function Music() {
         />
       </div>
     </section>
-  );
-}
+  </>
+);
 
-export default Music;
+export default MusicPage;
