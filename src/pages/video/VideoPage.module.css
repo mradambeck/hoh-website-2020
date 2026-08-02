@@ -18,3 +18,9 @@
   font-weight: 200;
   margin-bottom: 0;
 }
+
+@media (max-width: 774px) {
+  .pageWrapper {
+    padding: 4rem 2rem 10rem;
+  }
+}

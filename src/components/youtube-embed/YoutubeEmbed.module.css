@@ -1,6 +1,11 @@
 .wrapper {
   position: relative;
-  display: inline-block;
+  width: 100%;
+  /* Caps at the iframe's original 560x315 embed size on wide screens,
+     and shrinks with the viewport (keeping the same 16:9 ratio) on
+     narrow ones instead of overflowing past the page's width. */
+  max-width: 56rem;
+  aspect-ratio: 560 / 315;
 }
 
 .loadingOverlay {
@@ -15,4 +20,6 @@
 
 .youtubeEmbed {
   border: 0;
+  width: 100%;
+  height: 100%;
 }

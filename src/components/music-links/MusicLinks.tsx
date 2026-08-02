@@ -14,6 +14,7 @@ interface Props {
   image: string;
   imageAlt: string;
   className?: string;
+  title: string;
 }
 
 function MusicLinks({
@@ -23,6 +24,7 @@ function MusicLinks({
   image,
   imageAlt,
   className,
+  title,
 }: Props) {
   const [spotifyLoaded, setSpotifyLoaded] = useState(false);
   const buttonCount = 1 + (appleId ? 1 : 0) + (bandcampId ? 1 : 0);
@@ -53,6 +55,7 @@ function MusicLinks({
         <div className={styles.playerAndLinks}>
           <SpotifyEmbed
             id={spotifyId}
+            title={title}
             onLoaded={() => setSpotifyLoaded(true)}
           />
           <ButtonLink

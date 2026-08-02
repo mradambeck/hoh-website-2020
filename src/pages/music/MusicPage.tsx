@@ -21,6 +21,7 @@ const MusicPage = () => (
           image={withinWithoutArt}
           imageAlt="Within/Without album art"
           className={styles.withBorder}
+          title="Within/Without"
         />
         {/* Soulless */}
         <MusicLinks
@@ -28,6 +29,7 @@ const MusicPage = () => (
           image={soullessArt}
           imageAlt="Soulless single art"
           className={styles.withBorder}
+          title="Soulless (Houses of Heaven Remix)"
         />
         {/* Shot in the dark */}
         <MusicLinks
@@ -35,6 +37,7 @@ const MusicPage = () => (
           image={shotInTheDarkArt}
           imageAlt="Shot in the Dark single art"
           className={styles.withBorder}
+          title="Shot in the Dark (Houses of Heaven Remix)"
         />
         {/* Silent Places */}
         <MusicLinks
@@ -44,6 +47,7 @@ const MusicPage = () => (
           image={silentPlacesArt}
           imageAlt="Silent Places album art"
           className={styles.withBorder}
+          title="Silent Places"
         />
         {/* Sleep */}
         <MusicLinks
@@ -52,6 +56,7 @@ const MusicPage = () => (
           image={sleepArt}
           imageAlt="Sleep single art"
           className={styles.withBorder}
+          title="Sleep (Inhalt Dub)"
         />
         {/* Remnant */}
         <MusicLinks
@@ -61,6 +66,7 @@ const MusicPage = () => (
           image={remnantArt}
           imageAlt="Remnant EP art"
           className={styles.withBorder}
+          title="Remnant EP"
         />
       </div>
     </section>

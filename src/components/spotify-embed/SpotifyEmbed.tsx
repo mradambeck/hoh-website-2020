@@ -4,9 +4,15 @@ interface Props {
   className?: string;
   id: string;
   onLoaded?: () => void;
+  title: string;
 }
 
-const SpotifyEmbed = ({ className, id, onLoaded = () => null }: Props) => (
+const SpotifyEmbed = ({
+  className,
+  id,
+  onLoaded = () => null,
+  title,
+}: Props) => (
   <iframe
     className={
       className ? `${styles.spotifyEmbed} ${className}` : styles.spotifyEmbed
@@ -14,6 +20,7 @@ const SpotifyEmbed = ({ className, id, onLoaded = () => null }: Props) => (
     data-testid="embed-iframe"
     style={{ borderRadius: "12px" }}
     src={`https://open.spotify.com/embed/album/${id}?utm_source=generator&theme=0&si=745db058556546f2`}
+    title={title}
     width="100%"
     height="152"
     frameBorder="0"
